@@ -5,8 +5,9 @@ from langchain.chat_models import init_chat_model
 llm = init_chat_model('openai:gpt-4.1-mini')
 
 def make_joke(state:JokeState):
-  prompt = f'''입력된 주제를 바탕으로 농담을 생성해줘
-  입력된 주제: {state['messages']}
+  prompt = f'''입력된 주제를 바탕으로 농담을 생성해줘 피드백이 있다면 피드백을 반영하도록 해.
+  입력된 주제: {state['messages'][-1]}
+  피드백: {state['feedback']}
   '''
   result = llm.invoke(prompt)
   return{'messages': result}
@@ -26,6 +27,8 @@ def evaluate_joke(state:JokeState):
   '''
   result = structured_llm.invoke(prompt)
   return{'score': result.score, 'feedback': result.feedback, 'test' : result}
+
+
 
 
 def make_answer(state:JokeState):
