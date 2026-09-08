@@ -2,7 +2,7 @@
 
 from langgraph.graph import StateGraph, START, END
 from src.nodes import make_joke, make_answer, evaluate_joke
-from src.state import JokeState, StructuredJoke
+from src.state import JokeState
 from src.routers import score_router
 
 builder = StateGraph(JokeState)

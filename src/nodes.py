@@ -1,5 +1,6 @@
 # src/nodes.py
-from src.state import JokeState, StructuredJoke
+from src.state import JokeState
+from src.output_schema import StructuredJoke
 from langchain.chat_models import init_chat_model
 
 llm = init_chat_model('openai:gpt-4.1-mini')
